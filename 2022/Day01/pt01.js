@@ -1,19 +1,14 @@
-import { readFileSync } from "node:fs";
+// How many Calories are being carried by the Elf carrying the most Calories???
+import {readFileSync} from 'node:fs';
 
-let s = readFileSync("./input.txt", { encoding: "utf-8" });
+const data = readFileSync("./input.txt", {encoding: 'utf-8'});
 
-let split = s.split(/\r?\n/g);
+const numberGroups = data.split(/\n\s*\n/);
 
-let elves = [];
-let count = 0; //keep track of how many elves we have.
-for (let i = 0; i < split.length; i++) {
-  if (split[i].length > 2) {
-    if (elves[count] == undefined) elves[count] = 0;
-    elves[count] += Number(split[i]);
-  } else {
-    count++;
-  }
+const getSumOfGroup = (group) => {
+    return group.split(/\r?\n/).map(Number).reduce((acc, num) => acc + num, 0);
 }
 
-const max = Math.max(...elves);
-console.log(max);
+const ans = Math.max(...numberGroups.map(getSumOfGroup));
+
+console.log(ans);
