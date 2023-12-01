@@ -1,0 +1,1 @@
+Filter<std::str::Split<'_, fn(char) -> bool {char::methods::<impl char>::is_alphabetic}>, for<'a> fn(&'a str) -> bool {core::str::<impl str>::is_empty}>
